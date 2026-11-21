@@ -1,0 +1,45 @@
+input {
+  focus-follows-mouse
+  keyboard {
+    xkb {
+      layout "us,us"        
+      variant ",intl"
+      options "grp:alt_shift_toggle"  
+    }
+    numlock
+  }
+}
+
+spawn-at-startup "kitty"
+
+// spawn-at-startup "waybar"
+spawn-at-startup "noctalia"
+// spawn-sh-at-startup "systemctl --user start hyprpaper.service"
+spawn-sh-at-startup "systemctl --user restart xdg-desktop-portal xdg-desktop-portal-gnome"
+spawn-sh-at-startup "super-productivity"
+// spawn-at-startup "noctalia"
+// spawn-at-startup "opensnitch-ui"
+screenshot-path "~/Pictures/screenshots/%Y-%m-%d %H-%M-%S.png"
+// Set the regular wallpaper on the backdrop.
+// layer-rule {
+//   match namespace="^noctalia"
+//   place-within-backdrop true
+// }
+
+// Optionally, disable the workspace shadows in the overview.
+// overview {
+//   workspace-shadow {
+//     off
+//   }
+// }
+//
+output "DP-2" { 
+    position x=0 y=0
+    scale 1.0
+}
+
+output "eDP-1" {
+    position x=1920 y=0
+    scale 1.0
+    focus-at-startup
+}

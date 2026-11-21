@@ -1,0 +1,105 @@
+prefer-no-csd
+
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+// Set the regular wallpaper on the backdrop.
+layer-rule {
+  match namespace="^noctalia-wallpaper*"
+  place-within-backdrop true
+}
+
+// Optionally, disable the workspace shadows in the overview.
+// overview {
+//   workspace-shadow {
+//     off
+//   }
+// }
+
+screenshot-path "~/Pictures/screenshots/%Y-%m-%d %H-%M-%S.png"
+
+binds {
+  Mod+Return hotkey-overlay-title="Open kitty" { spawn "kitty"; }
+
+  Mod+Y hotkey-overlay-title="Open yazi" { spawn "yazi"; }
+  Mod+W hotkey-overlay-title="Open Brave" { spawn "brave"; }
+  Mod+Shift+1 { move-column-to-workspace 1; }
+  Mod+Shift+2 { move-column-to-workspace 2; }
+  Mod+Shift+3 { move-column-to-workspace 3; }
+  Mod+Shift+4 { move-column-to-workspace 4; }
+  Mod+Shift+5 { move-column-to-workspace 5; }
+  Mod+Shift+6 { move-column-to-workspace 6; }
+  Mod+Shift+7 { move-column-to-workspace 7; }
+  Mod+Shift+8 { move-column-to-workspace 8; }
+  Mod+Shift+9 { move-column-to-workspace 9; } 
+  Mod+Shift+H { move-column-left; }
+  Mod+Shift+L { move-column-right; }
+  Mod+Q { close-window; }
+  Mod+O { toggle-overview; }
+  Mod+Shift+S { screenshot-screen; }
+
+  Mod+1 { focus-workspace 1; }
+  Mod+2 { focus-workspace 2; }
+  Mod+3 { focus-workspace 3; }
+  Mod+4 { focus-workspace 4; }
+  Mod+5 { focus-workspace 5; }
+  Mod+6 { focus-workspace 6; }
+  Mod+7 { focus-workspace 7; }
+  Mod+8 { focus-workspace 8; }
+  Mod+9 { focus-workspace 9; }
+
+  Mod+J { focus-workspace-down; }
+  Mod+K { focus-workspace-up; }
+
+  Mod+H { focus-column-left; }
+  Mod+F { maximize-column; }
+  Mod+L { focus-column-right; }
+
+  Mod+R { spawn-sh "noctalia ipc call launcher toggle"; }
+  Mod+S { spawn-sh "noctalia ipc call controlCenter toggle"; }
+  Ctrl+L { spawn-sh "noctalia ipc call sessionMenu toggle"; }
+  Mod+Comma { spawn-sh "noctalia ipc call settings toggle"; }
+
+  // Audio & Brightness
+  XF86AudioRaiseVolume { spawn "noctalia" "ipc" "call" "volume" "increase"; }
+  XF86AudioLowerVolume { spawn "noctalia" "ipc" "call" "volume" "decrease"; }
+  XF86AudioMute { spawn "noctalia" "ipc" "call" "volume" "muteOutput"; }
+  XF86MonBrightnessUp { spawn "noctalia" "ipc" "call" "brightness" "increase"; }
+  XF86MonBrightnessDown { spawn "noctalia" "ipc" "call" "brightness" "decrease"; }
+}
+
+
+input {
+  focus-follows-mouse
+  keyboard {
+    xkb {
+      layout "us,us"        
+      variant ",intl"
+      options "grp:alt_shift_toggle"  
+    }
+    numlock
+  }
+}
+
+spawn-at-startup "kitty"
+spawn-at-startup "noctalia"
+
+layout {
+
+  tab-indicator {
+      width 8
+      gap 8
+      length total-proportion=1.0
+      position "bottom"
+      place-within-column
+  }
+  gaps 10
+  background-color "transparent"
+  focus-ring {
+      active-color "#C28E14"  // Fully transparent when focused
+      // inactive-color "#C28E14"
+      width 4
+  }
+}

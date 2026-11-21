@@ -1,0 +1,46 @@
+theme = "default"
+
+[editor]
+bufferline = "multiple"
+
+[editor.soft-wrap]
+enable = true   
+wrap-indicator = ""
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.auto-save.after-delay]
+enable = true 
+timeout = 5000
+
+[keys.normal]
+L = ":buffer-next"
+H = ":buffer-previous"
+"ret" = "goto_word"
+
+[keys.normal.space]
+B = ":buffer-close"
+V = ":vsplit"
+H = ":hsplit"
+n = ":insert-output date '+%%m-%%d-%%Y'"
+o = ":! xdg-open 'obsidian://open?vault=Vault&file=%{buffer_name}'"
+N = ":n"
+
+
+[editor.auto-pairs]
+'¿' = '?'
+'¡' = '!'
+'_' = '_'
+'$' = '$'
+'[' = ']'
+'{' = '}'
+'(' = ')'
+'*' = '*'
+'`' = '`'
+'|' = '|'
+
+[editor.indent-guides]
+# render = true
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽", "╎"
+skip-levels = 1 

@@ -1,0 +1,34 @@
+prefer-no-csd
+
+window-rule {
+     geometry-corner-radius 10
+     clip-to-geometry true
+     draw-border-with-background false
+
+     background-effect {
+       blur true
+       xray true
+     }
+
+     popups {
+	   opacity 0.6
+       geometry-corner-radius 15
+
+       background-effect {
+         xray false
+         blur true
+         noise 0.05
+         saturation 3
+       }
+     }
+
+}
+
+layer-rule {
+  match namespace="^noctalia-(background|launcher-overlay|dock|notifications|session-menu)-.*$"
+  opacity 0.60
+  background-effect {
+    xray false
+    blur true
+  }
+}

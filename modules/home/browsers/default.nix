@@ -1,0 +1,11 @@
+{
+  config,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./chromium.nix
+    #    ./librewolf.nix
+  ];
+}
