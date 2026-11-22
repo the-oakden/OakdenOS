@@ -5,6 +5,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  lib,
   ...
 }:
 {
@@ -17,18 +18,22 @@
     ../../modules/core/dm.nix
     ../../modules/core/time.nix
     inputs.nix-mineral.nixosModules.nix-mineral
+    ../../modules/core/nix-mineral.nix
   ];
 
-  nix-mineral = {
-    enable = true;
-    # See: https://nixos.org/manual/nixos/stable/#sec-option-definitions-setting-priorities
-    preset = [
-      "compatibility"
-      "performance"
+  nixpkgs.config = {
+
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "firefox-esr-140-bin-unwrapped"
+      ]; # Bootloader.
+
+    permittedInsecurePackages = [
+      "firefox-esr-140-bin-unwrapped-140.17.0esr"
     ];
   };
 
-  # Bootloader.
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -105,7 +110,6 @@
     proton-vpn-cli
     (import ../../scripts/niri-window-picker.nix { inherit pkgs; })
     (import ../../scripts/start.nix { inherit pkgs; })
-    orca-slicer
     pandoc
     karp
     kdePackages.dolphin
@@ -122,6 +126,7 @@
     lazygit
     # waybar
     rclone-ui
+    zotero
     ly
     nerd-fonts.jetbrains-mono
     opensnitch-ui

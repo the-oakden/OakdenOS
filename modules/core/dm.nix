@@ -3,14 +3,13 @@
 }:
 {
   services.displayManager = {
-    # ly.enable = true;
+    autoLogin = {
+      enable = true;
+      user = "user";
+    };
     sddm = {
       enable = true;
       wayland.enable = true;
-      autoLogin = {
-        enable = true;
-        user = "user";
-      };
     };
   };
 }
