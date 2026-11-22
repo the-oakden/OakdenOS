@@ -13,12 +13,13 @@
   imports = [
     ./hardware-configuration.nix
     ./stylix.nix
-    ./flatpak.nix
     ../../modules/core/printing.nix
     ../../modules/core/dm.nix
     ../../modules/core/time.nix
     inputs.nix-mineral.nixosModules.nix-mineral
     ../../modules/core/nix-mineral.nix
+    ../../modules/core/syncthing.nix
+    ../../modules/core/flatpak.nix
   ];
 
   nixpkgs.config = {
