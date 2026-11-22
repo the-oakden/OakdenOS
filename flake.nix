@@ -9,8 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zsh-helix-mode.url = "github:multirious/zsh-helix-mode/main";
-    zsh-helix-mode.inputs.nixpkgs.follows = "nixpkgs";
     stylix = {
       # url = "github:nix-community/stylix/release-26.05";
       url = "github:nix-community/stylix";
@@ -36,7 +34,7 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      # pkgs = nixpkgs.legacyPackages.${system};
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
 
     in
