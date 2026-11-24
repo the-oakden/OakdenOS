@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   inputs,
   ...
@@ -87,6 +86,7 @@
     fzf
     fuzzel
   ];
+
   programs = {
     bat = {
       enable = true;
@@ -111,6 +111,7 @@
     btop.enable = true;
     zellij.enable = true;
     fuzzel.enable = true;
+
     kitty = {
       enable = true;
       extraConfig = ''

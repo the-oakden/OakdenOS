@@ -23,7 +23,7 @@
   ];
 
   nixpkgs.config = {
-
+    allowUnfree = false;
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
@@ -102,9 +102,6 @@
     };
   };
 
-  # Unfree packages
-  nixpkgs.config.allowUnfree = false;
-
   environment.systemPackages = with pkgs; [
     mediawriter
     sioyek
@@ -125,7 +122,6 @@
     nixd
     nixfmt
     lazygit
-    # waybar
     rclone-ui
     zotero
     ly
@@ -141,8 +137,6 @@
     obs-studio
     cool-retro-term
     home-manager
-    # ashell
-    # hyprshot
     open-sans
     anki
     brightnessctl
@@ -150,21 +144,16 @@
   ];
 
   programs = {
-
     niri = {
       enable = true;
       package = pkgs-unstable.niri;
     };
   };
 
-  # Allow Hyprlock to perform authentication:
-  security.pam.services.hyprlock = { };
-
   # services.desktopManager.cosmic.enable = true;
-  services.upower.enable = true;
-  hardware.bluetooth.enable = true;
   services = {
     # blueman.enable = true;
+    upower.enable = true;
     dbus.enable = true;
     pipewire = {
       enable = true;
@@ -173,12 +162,10 @@
     };
   };
 
-  hardware.opentabletdriver.enable = true;
-
-  # services.syncthing = {
-  #   enable = true;
-  #   openDefaultPorts = true;
-  # };
+  hardware = {
+    opentabletdriver.enable = true;
+    bluetooth.enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -188,10 +175,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  # programs.dconf.enable = true;
-  # services.gnome.evolution-data-server.enable = true;
-  # optional to use google/nextcloud calendar
-  # services.gnome.gnome-online-accounts.enable = true;
-  # optional to use google/nextcloud calendar
-  # services.gnome.gnome-keyring.enable = true;
 }
